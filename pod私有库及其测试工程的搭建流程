@@ -1,0 +1,20 @@
+1）创建测试工程Test/Test.xcodeproj
+2）创建Podfile, 执行pod install
+3）Test工程同级目录下创建私有库目录Pod, 子目录结构Pod/Classes, Pod/Resources...（Pod及其子目录可以推荐此命名方式，也可随意命名）
+4）提交Test工程及Pod至git
+5）创建specs git仓库，用于保存私有库信息（信息保存于.podspec）
+6）cd ~/.cocoapods/repos
+  执行pod repo add 本地私有库specs名称(如MySpecs) specs仓库地址(如https://github.com/xxx/xxx.git)
+  完毕后生成目录~/.cocoapods/repos/MySpecs
+7）在Test工程同级目录下执行pod spec create 私有库名称（如MyListView)
+  完毕后，会生成MyListView.podspec文件
+  根据需求修改此文件相关配置项，参照http://guides.cocoapods.org/making/specs-and-specs-repo.html
+  修改完毕后，可执行pod spec lint 或 pod lib lint 检验此文件是否配置正确，根据错误信息进行修改
+8）提交MyListView.podspec至git，按照配置项s.source指定的tag（如1.0.0），给工程git仓库打一个tag
+  #tag 命令
+  git tag '1.0.0'
+  git push --tags
+  git push origin master
+9）在MyListView.podspec所在目录，执行pod repo push MySpecs(specs仓库clone到本地的仓库名称) MyListView.podspec
+  完毕后，会生成~/.cocoapods/repos/MySpecs/私有库名称(在.podspec文件中s.name定义)/版本(s.version)/MyListView.podspec
+  
