@@ -13,8 +13,7 @@
 8）提交MyListView.podspec至git，按照配置项s.source指定的tag（如1.0.0），给工程git仓库打一个tag
   #tag 命令
   git tag '1.0.0'
-  git push --tags
-  git push origin master
+  git push origin 1.0.0
 9）在MyListView.podspec所在目录，执行pod repo push MySpecs(specs仓库clone到本地的仓库名称) MyListView.podspec
   完毕后，会生成~/.cocoapods/repos/MySpecs/私有库名称(在.podspec文件中s.name定义)/版本(s.version)/MyListView.podspec
   同时，会将/s.name/s.version/MyListView.podspec push 到specs git仓库
