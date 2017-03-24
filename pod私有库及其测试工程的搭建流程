@@ -1,6 +1,6 @@
 1）创建测试工程Test/Test.xcodeproj
-2）创建Podfile, 执行pod install
-3）Test工程同级目录下创建私有库目录Pod, 子目录结构Pod/Classes, Pod/Resources...（Pod及其子目录可以推荐此命名方式，也可随意命名）
+2）Test工程同级目录下创建私有库目录Pod, 子目录结构Pod/Classes, Pod/Resources...（Pod及其子目录可以推荐此命名方式，也可随意命名）
+3）创建Podfile, 添加pod "私有库名称", path: "../"， 执行pod install
 4）提交Test工程及Pod至git
 5）创建specs git仓库，用于保存私有库信息（信息保存于.podspec）
 6）cd ~/.cocoapods/repos
