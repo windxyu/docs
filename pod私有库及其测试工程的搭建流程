@@ -22,3 +22,19 @@
   source 'https://github.com/CocoaPods/Specs.git' #官方spec库
   
   enjoy coding
+
+PS:关于私有库更新
+1）正常流程（升级版本）：
+  私有库某个版本完成后，打上该版本tag，push 到仓库；
+  更新podsepc文件中的s.version至最新版本，并push到spec仓库；
+  在其他工程Podfile所在目录下，执行pod update，私有库即可更新到最新版本
+2）开发调试流程（不升级版本）：
+  私有库更新修改完成后，push到仓库；
+  删除私有库本地分支和仓库分支：git tag -d 1.0.0 && git push origin :1.0.0
+  重新打1.0.0 tag包并push到仓库：git tag 1.0.0 && git push origin 1.0.0
+  删除调用私有库的工程A的pod 缓存：pod cache clean 私有库名称
+  删除工程A的Podfile文件中的私有库引用，并执行pod update
+  重新将私有库引用添加到工程A的Podfile中，并执行pod update
+  
+  Thats all 
+  
