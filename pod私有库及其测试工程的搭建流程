@@ -4,7 +4,7 @@
 4）提交Test工程及Pod至git
 5）创建specs git仓库，用于保存私有库信息（信息保存于.podspec）
 6）cd ~/.cocoapods/repos
-  执行pod repo add 本地私有库specs名称(如MySpecs) specs仓库地址(如https://github.com/xxx/xxx.git)
+  执行pod repo add 本地私有库specs名称(如MySpecs) specs仓库地址(如https://github.com/xxx/xxxSpecs.git)
   完毕后生成目录~/.cocoapods/repos/MySpecs
 7）在Test工程同级目录下执行pod spec create 私有库名称（如MyListView)
   完毕后，会生成MyListView.podspec文件
@@ -18,3 +18,8 @@
 9）在MyListView.podspec所在目录，执行pod repo push MySpecs(specs仓库clone到本地的仓库名称) MyListView.podspec
   完毕后，会生成~/.cocoapods/repos/MySpecs/私有库名称(在.podspec文件中s.name定义)/版本(s.version)/MyListView.podspec
   同时，会将/s.name/s.version/MyListView.podspec push 到specs git仓库
+10）最后，在其他工程需要引用MyListView库时，只需要在Podfile文件中加上
+  source 'https://github.com/xxx/xxxSpecs.git' #私有spec库
+  source 'https://github.com/CocoaPods/Specs.git' #官方spec库
+  
+  enjoy coding
